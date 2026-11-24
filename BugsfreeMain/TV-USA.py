@@ -363,11 +363,9 @@ def main():
         "https://raw.githubusercontent.com/aceray50/iptv/refs/heads/main/tv.m3u",
         "https://raw.githubusercontent.com/pigzillaaaaa/iptv-scraper/refs/heads/main/thetvapp.m3u8",
         "https://raw.githubusercontent.com/HelmerLuzo/PlutoTV_HL/refs/heads/main/tv/m3u/PlutoTV_tv_US.m3u",
-        "https://raw.githubusercontent.com/HelmerLuzo/PlutoTV_HL/refs/heads/main/tv/m3u/PlutoTV_tv_CA.m3u",
-        "https://iptv-org.github.io/iptv/countries/ca.m3u",
-        "https://raw.githubusercontent.com/HelmerLuzo/PlutoTV_HL/refs/heads/main/tv/m3u/PlutoTV_tv_GB.m3u",
+        "https://iptv-org.github.io/iptv/countries/ca.m3u",,
         "https://iptv-org.github.io/iptv/countries/uk.m3u",
-        "https://github.com/bugsfreeweb/LiveTVCollector/blob/main/SpecialLinks/4K_PACKAGE/Unknown/SpecialLinks.m3u",
+        "https://github.com/bugsfreeweb/LiveTVCollector/blob/main/SpecialLinks/4K_PACKAGE/Unknown/SpecialLinks.m3u"
         
     ]
 
