@@ -1,4 +1,4 @@
-name: TV-USA Update Files
+name: USA Live TV Collector
 
 on:
   schedule:
