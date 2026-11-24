@@ -95,12 +95,10 @@ class M3UCollector:
         logging.info(f"Extracted {len(stream_urls)} streaming URLs from {base_url}")
         return list(stream_urls)
 
-     def check_link_active(self, url, timeout=5):
+    def check_link_active(self, url, timeout=5):
         """Check whether a stream URL responds successfully."""
 
-        headers = {
-            'User-Agent': 'Mozilla/5.0'
-        }
+        headers = {'User-Agent': 'Mozilla/5.0'}
 
         with self.lock:
             if url in self.url_status_cache:
@@ -123,7 +121,6 @@ class M3UCollector:
         except requests.RequestException:
             pass
 
-        # Try GET if HEAD fails or is rejected
         if not active:
             try:
                 with requests.get(
