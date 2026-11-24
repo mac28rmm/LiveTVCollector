@@ -265,30 +265,36 @@ class M3UCollector:
         logging.info(
             f"Channel filtering complete. Removed {removed} channels."
         )
+    
     def process_sources(self, source_urls):
         """Process sources sequentially for better control."""
         self.channels.clear()
         self.seen_urls.clear()
         self.url_status_cache.clear()
-        
+
         all_m3u_urls = set()
+
         for url in source_urls:
             html_content, lines = self.fetch_content(url)
+
             if url.endswith('.html'):
-                m3u_urls = self.extract_stream_urls_from_html(html_content, url)
+                m3u_urls = self.extract_stream_urls_from_html(
+                    html_content, url
+                )
                 all_m3u_urls.update(m3u_urls)
             else:
                 self.parse_and_store(lines, url)
-        
+
         for m3u_url in all_m3u_urls:
             _, lines = self.fetch_content(m3u_url)
             self.parse_and_store(lines, m3u_url)
-        
-       if self.channels:
-    self.filter_active_channels()
-    self.filter_unwanted_channels()
-else:
-    logging.warning("No channels parsed from sources")
+
+        if self.channels:
+            self.filter_active_channels()
+            self.filter_unwanted_channels()
+        else:
+            logging.warning("No channels parsed from sources")
+
 
     def export_m3u(self, filename="LiveTV.m3u"):
         filepath = os.path.join(self.output_dir, filename)
