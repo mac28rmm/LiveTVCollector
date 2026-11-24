@@ -10,7 +10,35 @@ import concurrent.futures
 import threading
 import logging
 from bs4 import BeautifulSoup
+# ==========================================
+# USA CHANNEL FILTER SETTINGS
+# ==========================================
 
+EXCLUDED_KEYWORDS = [
+    # Shopping
+    "shopping", "home shopping", "qvc", "hsn",
+
+    # Radio
+    "radio", "radio station",
+
+    # Religious
+    "religious", "worship", "ministry",
+    "church", "gospel", "christian tv",
+
+    # Adult
+    "adult", "xxx", "porn",
+
+    # Test channels
+    "test channel", "testing", "demo channel",
+]
+
+# English language identifiers
+ENGLISH_LANGUAGES = [
+    "english", "eng", "en", "en-us", "en-gb"
+]
+
+# Remove repeated channel names, even if their URLs differ.
+REMOVE_DUPLICATE_NAMES = True
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -67,48 +95,56 @@ class M3UCollector:
         logging.info(f"Extracted {len(stream_urls)} streaming URLs from {base_url}")
         return list(stream_urls)
 
-    def check_link_active(self, url, timeout=2):
-        """Check if a link is active, optimized for speed."""
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
-        
+     def check_link_active(self, url, timeout=5):
+        """Check whether a stream URL responds successfully."""
+
+        headers = {
+            'User-Agent': 'Mozilla/5.0'
+        }
+
         with self.lock:
             if url in self.url_status_cache:
                 return self.url_status_cache[url]
-        
-        # Try original URL
+
+        active = False
+        working_url = url
+
         try:
-            response = requests.head(url, timeout=timeout, headers=headers, allow_redirects=True)
+            response = requests.head(
+                url,
+                timeout=timeout,
+                headers=headers,
+                allow_redirects=True
+            )
+
             if response.status_code < 400:
-                logging.info(f"Checked {url}: Active (HEAD)")
-                with self.lock:
-                    self.url_status_cache[url] = (True, url)
-                return True, url
+                active = True
+
         except requests.RequestException:
-            # Only try GET if HEAD fails, skip alternate protocol for speed
+            pass
+
+        # Try GET if HEAD fails or is rejected
+        if not active:
             try:
-                with requests.get(url, stream=True, timeout=timeout, headers=headers) as r:
-                    if r.status_code < 400:
-                        logging.info(f"Checked {url}: Active (GET)")
-                        with self.lock:
-                            self.url_status_cache[url] = (True, url)
-                        return True, url
-            except requests.RequestException as e:
-                logging.warning(f"Link check failed for {url}: {e}")
-                # Try alternate protocol only if not a timeout
-                if not isinstance(e, requests.Timeout):
-                    alt_url = url.replace('http://', 'https://') if url.startswith('http://') else url.replace('https://', 'http://')
-                    try:
-                        response = requests.head(alt_url, timeout=timeout, headers=headers, allow_redirects=True)
-                        if response.status_code < 400:
-                            logging.info(f"Checked {alt_url}: Active (HEAD, switched protocol)")
-                            with self.lock:
-                                self.url_status_cache[url] = (True, alt_url)
-                            return True, alt_url
-                    except requests.RequestException:
-                        pass
-                with self.lock:
-                    self.url_status_cache[url] = (False, url)
-                return False, url
+                with requests.get(
+                    url,
+                    stream=True,
+                    timeout=timeout,
+                    headers=headers
+                ) as response:
+
+                    if response.status_code < 400:
+                        active = True
+
+            except requests.RequestException:
+                pass
+
+        result = (active, working_url)
+
+        with self.lock:
+            self.url_status_cache[url] = result
+
+        return result
 
     def parse_and_store(self, lines, source_url):
         """Parse M3U lines and store channels."""
@@ -120,17 +156,22 @@ class M3UCollector:
                 match = re.search(r'tvg-logo="([^"]*)"', line)
                 logo = match.group(1) if match and match.group(1) else self.default_logo
                 
-                match = re.search(r'group-title="([^"]*)"', line)
-                group = match.group(1) if match else "Uncategorized"
+               match = re.search(r'group-title="([^"]*)"', line)
+group = match.group(1) if match else "Uncategorized"
+
+match = re.search(r'tvg-language="([^"]*)"', line)
+language = match.group(1).strip() if match else ""
                 
                 match = re.search(r',(.+)$', line)
                 name = match.group(1).strip() if match else "Unnamed Channel"
                 
                 current_channel = {
-                    'name': name,
-                    'logo': logo,
-                    'group': group,
-                    'source': source_url
+    'name': name,
+    'logo': logo,
+    'group': group,
+    'language': language,
+    'source': source_url
+}
                 }
             elif line.startswith('http') and current_channel:
                 with self.lock:
@@ -170,7 +211,58 @@ class M3UCollector:
 
         self.channels = active_channels
         logging.info(f"Active channels after filtering: {sum(len(ch) for ch in active_channels.values())}")
+    def filter_unwanted_channels(self):
+        """Remove unwanted categories, languages and duplicate names."""
 
+        filtered_channels = defaultdict(list)
+        seen_names = set()
+
+        removed = 0
+
+        for group, channels in self.channels.items():
+            for channel in channels:
+
+                name = channel.get("name", "").strip()
+                category = group.strip()
+
+                search_text = (name + " " + category).lower()
+
+                # Remove unwanted keywords
+                if any(word in search_text for word in EXCLUDED_KEYWORDS):
+                    removed += 1
+                    logging.info(f"Filtered channel: {name}")
+                    continue
+
+                # Remove channels explicitly identified as non-English
+                language = channel.get("language", "").strip().lower()
+
+                if language and language not in ENGLISH_LANGUAGES:
+                    removed += 1
+                    logging.info(
+                        f"Filtered non-English channel: {name} ({language})"
+                    )
+                    continue
+
+                # Remove duplicate channel names
+                normalized_name = re.sub(
+                    r'\s+', ' ', name.lower()
+                )
+
+                if REMOVE_DUPLICATE_NAMES:
+                    if normalized_name in seen_names:
+                        removed += 1
+                        logging.info(f"Removed duplicate: {name}")
+                        continue
+
+                    seen_names.add(normalized_name)
+
+                filtered_channels[group].append(channel)
+
+        self.channels = filtered_channels
+
+        logging.info(
+            f"Channel filtering complete. Removed {removed} channels."
+        )
     def process_sources(self, source_urls):
         """Process sources sequentially for better control."""
         self.channels.clear()
@@ -190,10 +282,11 @@ class M3UCollector:
             _, lines = self.fetch_content(m3u_url)
             self.parse_and_store(lines, m3u_url)
         
-        if self.channels:
-            self.filter_active_channels()
-        else:
-            logging.warning("No channels parsed from sources")
+       if self.channels:
+    self.filter_active_channels()
+    self.filter_unwanted_channels()
+else:
+    logging.warning("No channels parsed from sources")
 
     def export_m3u(self, filename="LiveTV.m3u"):
         filepath = os.path.join(self.output_dir, filename)
@@ -271,7 +364,7 @@ def main():
     ]
 
     # Set check_links=False for super speed, True for accuracy
-    collector = M3UCollector(country="USA", check_links=False)
+    collector = M3UCollector(country="USA", check_links=True)
     collector.process_sources(source_urls)
     
     # Export files
