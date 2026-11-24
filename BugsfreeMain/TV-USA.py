@@ -147,29 +147,31 @@ class M3UCollector:
         """Parse M3U lines and store channels."""
         current_channel = {}
         channel_count = 0
+
         for line in lines:
             line = line.strip()
+
             if line.startswith('#EXTINF:'):
                 match = re.search(r'tvg-logo="([^"]*)"', line)
                 logo = match.group(1) if match and match.group(1) else self.default_logo
-                
-               match = re.search(r'group-title="([^"]*)"', line)
-group = match.group(1) if match else "Uncategorized"
 
-match = re.search(r'tvg-language="([^"]*)"', line)
-language = match.group(1).strip() if match else ""
-                
+                match = re.search(r'group-title="([^"]*)"', line)
+                group = match.group(1) if match else "Uncategorized"
+
+                match = re.search(r'tvg-language="([^"]*)"', line)
+                language = match.group(1).strip() if match else ""
+
                 match = re.search(r',(.+)$', line)
                 name = match.group(1).strip() if match else "Unnamed Channel"
-                
+
                 current_channel = {
-    'name': name,
-    'logo': logo,
-    'group': group,
-    'language': language,
-    'source': source_url
-}
+                    'name': name,
+                    'logo': logo,
+                    'group': group,
+                    'language': language,
+                    'source': source_url
                 }
+
             elif line.startswith('http') and current_channel:
                 with self.lock:
                     if line not in self.seen_urls:
@@ -177,8 +179,11 @@ language = match.group(1).strip() if match else ""
                         current_channel['url'] = line
                         self.channels[current_channel['group']].append(current_channel)
                         channel_count += 1
+
                 current_channel = {}
+
         logging.info(f"Parsed {channel_count} channels from {source_url}")
+
 
     def filter_active_channels(self):
         """Filter out inactive channels, skippable for speed."""
