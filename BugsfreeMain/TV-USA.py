@@ -31,7 +31,18 @@ EXCLUDED_KEYWORDS = [
     # Test channels
     "test channel", "testing", "demo channel",
 ]
-
+# Manually excluded channel names
+EXCLUDED_CHANNELS = [
+    "AMC Thrillers (1080p)",
+    "24 Hour Free Movies (720p)",
+    "00s Replay",
+    "like Gecko) Chrome/83.0.4103.97 Safari/537.36\" group-title=\"Movies\",Aneflix Live (720p)",
+    "BET Comedy Movies",
+    "BET Visionaries",
+    "BET Cinema",
+    
+    
+]
 # English language identifiers
 ENGLISH_LANGUAGES = [
     "english", "eng", "en", "en-us", "en-gb"
