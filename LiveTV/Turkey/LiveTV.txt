@@ -12298,13 +12298,8 @@ URL: https://nord.ayakkabiparti.lol/bbc/index.m3u8
 Logo: https://upload.wikimedia.org/wikipedia/commons/7/7e/BBC_Earth_2023.svg
 Source: https://iptv-org.github.io/iptv/countries/tr.m3u
 --------------------------------------------------
-Name: like Gecko) Chrome/130.0.0.0 Safari/537.36" group-title="Documentary",National Geographic (Turkiye)
-URL: https://nord.ayakkabiparti.lol/natgeo/index.m3u8
-Logo: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png
-Source: https://iptv-org.github.io/iptv/countries/tr.m3u
---------------------------------------------------
-Name: like Gecko) Chrome/130.0.0.0 Safari/537.36" group-title="Documentary",National Geographic Wild (Turkiye)
-URL: https://nord.ayakkabiparti.lol/natgeowild/index.m3u8
+Name: National Geographic Wild (Turkiye) (1080p) [Geo-blocked]
+URL: https://saran-live.ercdn.net/natgeowild/index.m3u8
 Logo: https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/National_Geographic_Wild_logo.svg/960px-National_Geographic_Wild_logo.svg.png
 Source: https://iptv-org.github.io/iptv/countries/tr.m3u
 --------------------------------------------------
@@ -12426,9 +12421,19 @@ URL: http://185.234.111.229:8000/play/a05u
 Logo: https://i.imgur.com/p3ON1oX.png
 Source: https://iptv-org.github.io/iptv/countries/tr.m3u
 --------------------------------------------------
+Name: Bi Kanal (1080p)
+URL: https://bikanal-live.ercdn.net/bikanal/bikanal.m3u8
+Logo: https://www.bikanal.com/frontend/img/logo.webp
+Source: https://iptv-org.github.io/iptv/countries/tr.m3u
+--------------------------------------------------
 Name: Cekmekoy TV (1080p)
 URL: https://cdn-cekmekoybeltv.yayin.com.tr/cekmekoybeltv/cekmekoybeltv_1080p/playlist.m3u8
 Logo: https://i.imgur.com/sjAGFWu.png
+Source: https://iptv-org.github.io/iptv/countries/tr.m3u
+--------------------------------------------------
+Name: Cine 1 (1080p)
+URL: https://canliyayin.cine1.com.tr/memfs/cbaef080-a742-4644-9e9e-2b9f6a5103c3.m3u8
+Logo: https://bugsfreeweb.github.io/LiveTVCollector/BugsfreeLogo/default-logo.png
 Source: https://iptv-org.github.io/iptv/countries/tr.m3u
 --------------------------------------------------
 Name: Elsharq TV (1080p) [Not 24/7]
@@ -12546,6 +12551,11 @@ URL: https://edge1.socialsmart.tv/on4/bant1/playlist.m3u8
 Logo: https://i.imgur.com/qGRa1KI.png
 Source: https://iptv-org.github.io/iptv/countries/tr.m3u
 --------------------------------------------------
+Name: Pati TV (1080p)
+URL: https://patitv.radyotelekomtv.com:3958/live/patitvlive.m3u8
+Logo: https://patitv.com.tr/wp-content/themes/pati-tv/assets/img/logo-240.png
+Source: https://iptv-org.github.io/iptv/countries/tr.m3u
+--------------------------------------------------
 Name: Sozcu TV (1080p)
 URL: https://raw.githubusercontent.com/yaskar661-lgtm/stream/refs/heads/main/filbox/szchd.m3u8
 Logo: https://i.imgur.com/BxpdvsG.png
@@ -12617,6 +12627,11 @@ Group: Music
 Name: Dream Turk (720p)
 URL: https://live.duhnet.tv/S2/HLS_LIVE/dreamturknp/playlist.m3u8
 Logo: https://i.imgur.com/vJ8VaZi.png
+Source: https://iptv-org.github.io/iptv/countries/tr.m3u
+--------------------------------------------------
+Name: KN Music TV (1080p)
+URL: https://cdn4.yayin.com.tr/kntv/tracks-v1a1/mono.m3u8
+Logo: https://www.knmusictv.com/wp-content/uploads/2026/01/LOGO2112.png
 Source: https://iptv-org.github.io/iptv/countries/tr.m3u
 --------------------------------------------------
 Name: Kral Pop TV (720p)

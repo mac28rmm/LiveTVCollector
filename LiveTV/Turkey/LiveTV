@@ -30216,10 +30216,22 @@
     "img": "https://i.imgur.com/p3ON1oX.png"
   },
   {
+    "name": "Bi Kanal (1080p)",
+    "type": "General",
+    "url": "https://bikanal-live.ercdn.net/bikanal/bikanal.m3u8",
+    "img": "https://www.bikanal.com/frontend/img/logo.webp"
+  },
+  {
     "name": "Cekmekoy TV (1080p)",
     "type": "General",
     "url": "https://cdn-cekmekoybeltv.yayin.com.tr/cekmekoybeltv/cekmekoybeltv_1080p/playlist.m3u8",
     "img": "https://i.imgur.com/sjAGFWu.png"
+  },
+  {
+    "name": "Cine 1 (1080p)",
+    "type": "General",
+    "url": "https://canliyayin.cine1.com.tr/memfs/cbaef080-a742-4644-9e9e-2b9f6a5103c3.m3u8",
+    "img": "https://bugsfreeweb.github.io/LiveTVCollector/BugsfreeLogo/default-logo.png"
   },
   {
     "name": "Elsharq TV (1080p) [Not 24/7]",
@@ -30358,6 +30370,12 @@
     "type": "General",
     "url": "https://edge1.socialsmart.tv/on4/bant1/playlist.m3u8",
     "img": "https://i.imgur.com/qGRa1KI.png"
+  },
+  {
+    "name": "Pati TV (1080p)",
+    "type": "General",
+    "url": "https://patitv.radyotelekomtv.com:3958/live/patitvlive.m3u8",
+    "img": "https://patitv.com.tr/wp-content/themes/pati-tv/assets/img/logo-240.png"
   },
   {
     "name": "Sozcu TV (1080p)",
@@ -30744,15 +30762,9 @@
     "img": "https://upload.wikimedia.org/wikipedia/commons/7/7e/BBC_Earth_2023.svg"
   },
   {
-    "name": "like Gecko) Chrome/130.0.0.0 Safari/537.36\" group-title=\"Documentary\",National Geographic (Turkiye)",
+    "name": "National Geographic Wild (Turkiye) (1080p) [Geo-blocked]",
     "type": "Documentary",
-    "url": "https://nord.ayakkabiparti.lol/natgeo/index.m3u8",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png"
-  },
-  {
-    "name": "like Gecko) Chrome/130.0.0.0 Safari/537.36\" group-title=\"Documentary\",National Geographic Wild (Turkiye)",
-    "type": "Documentary",
-    "url": "https://nord.ayakkabiparti.lol/natgeowild/index.m3u8",
+    "url": "https://saran-live.ercdn.net/natgeowild/index.m3u8",
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/National_Geographic_Wild_logo.svg/960px-National_Geographic_Wild_logo.svg.png"
   },
   {
@@ -30808,6 +30820,12 @@
     "type": "Music",
     "url": "https://live.duhnet.tv/S2/HLS_LIVE/dreamturknp/playlist.m3u8",
     "img": "https://i.imgur.com/vJ8VaZi.png"
+  },
+  {
+    "name": "KN Music TV (1080p)",
+    "type": "Music",
+    "url": "https://cdn4.yayin.com.tr/kntv/tracks-v1a1/mono.m3u8",
+    "img": "https://www.knmusictv.com/wp-content/uploads/2026/01/LOGO2112.png"
   },
   {
     "name": "Kral Pop TV (720p)",
