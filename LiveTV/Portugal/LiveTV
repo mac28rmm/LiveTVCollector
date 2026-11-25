@@ -5208,6 +5208,12 @@
     "img": "https://raw.githubusercontent.com/LITUATUI/M3UPT/main/logos/PCNELID.png"
   },
   {
+    "name": "IEGCQT S14E12 22-11-2026",
+    "type": "IEGCQT",
+    "url": "https://cfvod.kaltura.com/edash/p/4526593/sp/452659300/serveFlavor/entryId/1_hbjg0j1v/v/11/ev/14/flavorId/1_,1lhat51h,doew1c86,t5w2pj4s,4n9vcbb0,28l66wdn,4w1ugydh,/forceproxy/true/name/a.mp4.urlset/manifest.mpd",
+    "img": "https://raw.githubusercontent.com/LITUATUI/M3UPT/main/logos/IEGCQT.png"
+  },
+  {
     "name": "IEGCQT S14E11 15-11-2026",
     "type": "IEGCQT",
     "url": "https://cfvod.kaltura.com/edash/p/4526593/sp/452659300/serveFlavor/entryId/1_16y0rijs/v/1/ev/7/flavorId/1_,cwkmjk3h,04ixb7e4,4jr7yqqm,kly63b88,ynh7mxr0,kk3i9oe6,/forceproxy/true/name/a.mp4.urlset/manifest.mpd",
@@ -5796,18 +5802,6 @@
     "img": "https://i.imgur.com/2rXsq2m.png"
   },
   {
-    "name": "DAZN 4 (540p)",
-    "type": "Sports",
-    "url": "http://23.237.104.106:8080/DAZN_4/index.m3u8",
-    "img": "https://i.imgur.com/m7ga8bU.png"
-  },
-  {
-    "name": "DAZN 5 (720p)",
-    "type": "Sports",
-    "url": "http://23.237.104.106:8080/DAZN_5/index.m3u8",
-    "img": "https://i.imgur.com/HD2XaeS.png"
-  },
-  {
     "name": "Eurosport 1 Portugal",
     "type": "Sports",
     "url": "http://185.228.163.146:8000/play/a03z/index.m3u8",
@@ -6062,7 +6056,7 @@
   {
     "name": "TVI Internacional 🇵🇹",
     "type": "Portugal 🇵🇹",
-    "url": "https://video-auth6.iol.pt/live_tvi_internacional/live_tvi_internacional/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjIvMjAyNiA5OjU2OjQwIFBNJmhhc2hfdmFsdWU9ODVSMGRUZWhDZjlkRnk4WFMzM2YrQT09JnZhbGlkbWludXRlcz0xNDQwJmlkPTkwNmIyZDQwLTE5OTAtNDQwZC04MjM2LThlZjkyZTRjYzgzNQ==/",
+    "url": "https://video-auth6.iol.pt/live_tvi_internacional/live_tvi_internacional/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjUvMjAyNiAzOjM3OjEgQU0maGFzaF92YWx1ZT1iejNhR1I4OFlJZUpxaVpEYUZXdDZRPT0mdmFsaWRtaW51dGVzPTE0NDAmaWQ9ZjFjZWFmYTctNDkyMC00NDU3LThkZDktZmE4OTg1YTY3MGFl/",
     "img": "https://logo.m3uassets.com/tviinternacional.png"
   },
   {
@@ -6074,7 +6068,7 @@
   {
     "name": "TVI 🇵🇹",
     "type": "Portugal 🇵🇹",
-    "url": "https://video-auth6.iol.pt/live_tvi/live_tvi/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjIvMjAyNiA5OjU2OjM5IFBNJmhhc2hfdmFsdWU9UEJtR2hTdCtaNEhyRmJTNitRRDFlZz09JnZhbGlkbWludXRlcz0xNDQwJmlkPTYxOGY1NzE1LWRlNjItNDk0NS1iNGU0LWNiYWQ0ZmZiYjNkMQ==/",
+    "url": "https://video-auth6.iol.pt/live_tvi/live_tvi/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjUvMjAyNiAzOjM3OjAgQU0maGFzaF92YWx1ZT1JL1BPZSthcjd6TWY4dnlyeTFJLytRPT0mdmFsaWRtaW51dGVzPTE0NDAmaWQ9MDkyMmQzYWQtYWRjOC00MTI3LWIyZjQtNTk2MTEwYzk5NTcy/",
     "img": "https://github.com/iprtl/p1/raw/master/logo/tvi.webp"
   },
   {
@@ -6170,7 +6164,7 @@
   {
     "name": "CNN Portugal 🇵🇹",
     "type": "News 🇵🇹🇧🇷",
-    "url": "https://video-auth7.iol.pt/live_cnn/live_cnn/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjIvMjAyNiA5OjU2OjM5IFBNJmhhc2hfdmFsdWU9WjhoTjZENW5WMENOUUxIRHhsSlR5UT09JnZhbGlkbWludXRlcz0xNDQwJmlkPTJiMmFmZWY3LTU4YjgtNDZmZS1hNGI4LTQyZDZjN2ViNjk1Ng==/",
+    "url": "https://video-auth7.iol.pt/live_cnn/live_cnn/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjUvMjAyNiAzOjM3OjAgQU0maGFzaF92YWx1ZT00NDZXdU9hbkNETEtqZE9URCtlRXRBPT0mdmFsaWRtaW51dGVzPTE0NDAmaWQ9NTExYzk1MWItNjVjYy00MjgyLTkxZTMtNGY2NmM0OGNkNTY5/",
     "img": "https://github.com/iprtl/p1/raw/master/logo/cnnpt.png"
   },
   {
